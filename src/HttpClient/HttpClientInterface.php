@@ -13,10 +13,10 @@ interface HttpClientInterface {
     public function get($path, $parameters = []);
 
     /**
-     * @param  string $pathname
+     * @param  string $sessionId
      * @param  string $key
      * @return array
      */
-    public function initialize($pathname, $key);
+    public function authenticate($sessionId, $key);
 
 }

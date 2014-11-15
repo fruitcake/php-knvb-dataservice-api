@@ -50,21 +50,14 @@ class HttpClient implements HttpClientInterface {
     /**
      * {@inheritdoc}
      */
-    public function initialize($pathname, $key, $apiVersion = '2.0')
+    public function authenticate($sessionId, $key)
     {
-        $response = $this->get('initialisatie/'.$pathname, ['apiversion' => $apiVersion]);
+        $subscriber = new AuthenticationSubscriber([
+            'key'       => $key,
+            'session_id'=> $sessionId,
+        ]);
 
-        if (isset($response['List']) && isset($response['List'][0])) {
-            $subscriber = new AuthenticationSubscriber([
-                'pathname'  => $pathname,
-                'key'       => $key,
-                'session_id'=> $response['List'][0]['PHPSESSID'],
-            ]);
-
-            $this->client->getEmitter()->attach($subscriber);
-        }
-
-        return $response;
+        $this->client->getEmitter()->attach($subscriber);
     }
 
 }
