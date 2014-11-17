@@ -2,18 +2,49 @@
 
 namespace KNVB\Dataservice;
 
-use KNVB\Dataservice\Traits\GetDataTrait;
-
 class Team {
-    use GetDataTrait;
 
-    /** @var Club $club */
-    protected $club;
-    protected $id;
+    /**
+     * @var string
+     */
+    public $teamid;
 
-    public function __construct(Club $club, $id)
+    /**
+     * @var string
+     */
+    public $teamname;
+
+    /**
+     * @var string
+     */
+    public $speeldag;
+
+    /**
+     * @var string
+     */
+    public $categorie;
+
+    /**
+     * @var string
+     */
+    public $reguliercompetitie;
+
+    /**
+     * @var string
+     */
+    public $bekercompetitie;
+
+    /**
+     * @var string
+     */
+    public $nacompetitie;
+
+
+    /** @var Api */
+    protected $api;
+
+    public function __construct(Api $api)
     {
-        $this->club = $club;
-        $this->id = $id;
+        $this->api = $api;
     }
 }
