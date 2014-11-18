@@ -24,4 +24,6 @@ Simple example:
     echo $club->clubnaam;
     foreach($club->getTeams() as $team){
         echo $team->teamname;
+        $results = $team->getResults('R');
+        $schedule = $team->getSchedule('R');
     }

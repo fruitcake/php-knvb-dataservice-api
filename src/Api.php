@@ -3,6 +3,7 @@
 namespace KNVB\Dataservice;
 
 use JsonMapper;
+use KNVB\Dataservice\Exception\InvalidResponseException;
 use KNVB\Dataservice\HttpClient\HttpClient;
 use KNVB\Dataservice\HttpClient\HttpClientInterface;
 
@@ -11,6 +12,7 @@ class Api {
 	/** @var HttpClientInterface $client  */
 	protected $client;
 
+	/** @var JsonMapper $mapper */
 	protected $mapper;
 
 	/**
@@ -32,9 +34,17 @@ class Api {
 	 */
 	public function request($path, $parameters = [])
 	{
-		$data = $this->client->get($path, $parameters);
+		try{
+			$data = $this->client->get($path, $parameters);
+		}catch(\Exception $e){
+			throw new InvalidResponseException($e->getMessage(), $e->getCode());
+		}
 
-		if (!isset($data['errorcode']) || $data['errorcode'] !== 1000 || !isset($data['List'])) {
+		if (isset($data['errorcode']) && $data['errorcode'] == 9995) {
+			// Result is empty, just return an empty array instead..
+			$data['List'] = isset($data['List']) ? $data['List'] : [];
+			return $data;
+		} elseif (!isset($data['errorcode']) || $data['errorcode'] !== 1000 || !isset($data['List'])) {
 			throw new InvalidResponseException($data['message'], $data['errorcode']);
 		}
 

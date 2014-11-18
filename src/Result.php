@@ -2,8 +2,7 @@
 
 namespace KNVB\Dataservice;
 
-
-class Ranking extends Match {
+class Result extends Match {
 
 	/**
 	 * # doelpunten thuis club

@@ -67,6 +67,7 @@ class Club {
 
     /** @var Api */
     protected $api;
+    protected $teams = [];
 
     /**
      * @param Api $api
@@ -74,6 +75,11 @@ class Club {
     public function __construct(Api $api)
     {
         $this->api = $api;
+    }
+
+    public function getName()
+    {
+        return $this->clubnaam;
     }
 
     /**
@@ -90,6 +96,11 @@ class Club {
 
         $this->teams = array();
         foreach($response['List'] as $item){
+            // Convert "J" / "N" to true/false
+            foreach(['regulierecompetitie', 'bekercompetitie', 'nacompetitie'] as $key){
+                $item[$key] = $item[$key] == "J";
+            }
+
             /** @var Team $team */
             $team = $this->api->map($item, new Team($this->api));
             $this->teams[$team->teamid] = $team;
