@@ -59,8 +59,8 @@ class Team {
     }
 
     /**
-     * @param  string       $comptype Competitie type R = Regulier, B = Beker, N = Nacompetitie, V = Vriendschappelijke Competitie
      * @param  int|string   $weeknummer week waarvan de uitslagen worden opgehaald (1-52, A) (optioneel)
+     * @param  string       $comptype Competitie type R = Regulier, B = Beker, N = Nacompetitie, V = Vriendschappelijke Competitie
      * @return Match[]
      * @throws InvalidResponseException
      */
@@ -84,8 +84,8 @@ class Team {
     }
 
     /**
-     * @param  string       $comptype Competitie type R = Regulier, B = Beker, N = Nacompetitie, V = Vriendschappelijke Competitie
      * @param  int|string   $weeknummer week waarvan het programma worden opgehaald (1-52, A) (optioneel)
+     * @param  string       $comptype Competitie type R = Regulier, B = Beker, N = Nacompetitie, V = Vriendschappelijke Competitie
      * @return Match[]
      * @throws InvalidResponseException
      */
@@ -115,11 +115,12 @@ class Team {
      * @return Ranking[]
      * @throws InvalidResponseException
      */
-    public function getRanking($comptype = 'R', $pouleid = null, $periode = null)
+    public function getRanking($comptype = null, $pouleid = null, $periode = null)
     {
-        $params = [
-            'comptype' => $comptype,
-        ];
+        $params = [];
+        if($comptype !== null){
+            $params['comptype'] = $comptype;
+        }
         if($pouleid !== null){
             $params['pouleid'] = $pouleid;
         }
@@ -134,5 +135,29 @@ class Team {
         }
 
         return $ranking;
+    }
+
+    /**
+     * @param  string   $comptype Van welke competitie type moet de stand worden terug gegeven
+     * @return Competition[]
+     * @throws InvalidResponseException
+     */
+    public function getCompetitions($comptype = null)
+    {
+        $params = [];
+        if($comptype !== null){
+            $params['comptype'] = $comptype;
+        }
+
+        $response = $this->api->request('competities/'.$this->getId(), $params);
+
+        $competitions = array();
+        foreach($response['List'] as $item){
+            $competition = new Competition($this->api);
+            $competition->TeamId = $this->getId();
+            $competitions[] = $this->api->map($item, $competition);
+        }
+
+        return $competitions;
     }
 }

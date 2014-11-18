@@ -23,9 +23,17 @@ Simple example:
 
     echo $club->getName();
     $matches = $club->getMatches();
+    $competitions = $club->getCompetitions();
     
     foreach($club->getTeams() as $team){
         echo $team->getName();
         $results = $team->getResults();
         $schedule = $team->getSchedule();
+        
+        foreach($team->getCompetitions() as $competition){
+            echo $competition->getName();
+            $results = $competition->getResults();
+            $schedule = $competition->getSchedule();
+            $ranking = $competition->getRanking();
+        }
     }

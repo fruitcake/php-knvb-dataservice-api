@@ -163,5 +163,21 @@ class Club {
         $response = $this->api->request('wedstrijd/'.$id);
         return $this->api->map($response['List'][0], new Match($this->api));
     }
-    
+
+    /**
+     * @return Competition[]
+     * @throws InvalidResponseException
+     */
+    public function getCompetitions()
+    {
+        $response = $this->api->request('competities');
+
+        $competitions = array();
+        foreach($response['List'] as $item){
+            $competitions[] = $this->api->map($item, new Competition($this->api));
+        }
+
+        return $competitions;
+    }
+
 }
