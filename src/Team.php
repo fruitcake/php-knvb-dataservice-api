@@ -59,46 +59,80 @@ class Team {
     }
 
     /**
-     * @return Result[]
+     * @param  string       $comptype Competitie type R = Regulier, B = Beker, N = Nacompetitie, V = Vriendschappelijke Competitie
+     * @param  int|string   $weeknummer week waarvan de uitslagen worden opgehaald (1-52, A) (optioneel)
+     * @return Match[]
      * @throws InvalidResponseException
      */
-    public function getResults($comptype = 'R', $weeknummer = null)
+    public function getResults($weeknummer = null, $comptype = null)
     {
-        $params = [
-            'comptype' => $comptype,
-        ];
+        $params = [];
+        if($comptype !== null){
+            $params['comptype'] = $comptype;
+        }
         if($weeknummer !== null){
             $params['weeknummer'] = $weeknummer;
         }
         $response = $this->api->request('teams/'.$this->getId().'/results', $params);
 
-        $results = array();
+        $matches = array();
         foreach($response['List'] as $item){
-            $results[] = $this->api->map($item, new Result());
+            $matches[] = $this->api->map($item, new Match());
         }
 
-        return $results;
+        return $matches;
     }
 
     /**
-     * @return Schedule[]
+     * @param  string       $comptype Competitie type R = Regulier, B = Beker, N = Nacompetitie, V = Vriendschappelijke Competitie
+     * @param  int|string   $weeknummer week waarvan het programma worden opgehaald (1-52, A) (optioneel)
+     * @return Match[]
      * @throws InvalidResponseException
      */
-    public function getSchedule($comptype = 'R', $weeknummer = null)
+    public function getSchedule($weeknummer = null, $comptype = null)
     {
-        $params = [
-            'comptype' => $comptype,
-        ];
+        $params = [];
+        if($comptype !== null){
+            $params['comptype'] = $comptype;
+        }
         if($weeknummer !== null){
             $params['weeknummer'] = $weeknummer;
         }
         $response = $this->api->request('teams/'.$this->getId().'/schedule', $params);
 
-        $schedule = array();
+        $matches = array();
         foreach($response['List'] as $item){
-            $schedule[] = $this->api->map($item, new Schedule());
+            $matches[] = $this->api->map($item, new Match());
         }
 
-        return $schedule;
+        return $matches;
+    }
+
+    /**
+     * @param  string   $comptype Van welke competitie type moet de stand worden terug gegeven
+     * @param  string   $pouleid ('all' for all poules')
+     * @param  int      $periode Om de stand per periode terug te geven (1-4, optioneel)
+     * @return Ranking[]
+     * @throws InvalidResponseException
+     */
+    public function getRanking($comptype = 'R', $pouleid = null, $periode = null)
+    {
+        $params = [
+            'comptype' => $comptype,
+        ];
+        if($pouleid !== null){
+            $params['pouleid'] = $pouleid;
+        }
+        if($periode !== null){
+            $params['periode'] = $periode;
+        }
+        $response = $this->api->request('teams/'.$this->getId().'/ranking', $params);
+
+        $ranking = array();
+        foreach($response['List'] as $item){
+            $ranking[] = $this->api->map($item, new Ranking());
+        }
+
+        return $ranking;
     }
 }

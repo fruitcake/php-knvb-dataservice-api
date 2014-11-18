@@ -88,4 +88,82 @@ class Match {
      * @var int
      */
     public $WedstrijdDag;
+
+    /**
+     * # doelpunten thuis club
+     * @var int
+     */
+    public $PuntenTeam1;
+
+    /**
+     * # doelpunten uit club
+     * @var int
+     */
+    public $PuntenTeam2;
+
+    /**
+     * # doelpunten thuis club in verlenging,
+     * geeft NULL als er niet is gescoord of er geen verlenging is geweest
+     *
+     * @var int|null
+     */
+    public $PuntenTeam1Verl;
+
+    /**
+     * # doelpunten uit club in verlenging,
+     * geeft NULL als er niet is gescoord of er geen verlenging is geweest
+     *
+     * @var int|null
+     */
+    public $PuntenTeam2Verl;
+
+    /**
+     * # doelpunten thuis club bij strafschoppen,
+     * geeft NULL als er niet is gescoord of er geen strafschoppen genomen zijn
+     *
+     * @var int|null
+     */
+    public $PuntenTeam1Strafsch;
+
+    /**
+     * # doelpunten thuis club bij strafschoppen,
+     * geeft NULL als er niet is gescoord of er geen strafschoppen genomen zijn
+     *
+     * @var int|null
+     */
+    public $PuntenTeam2Strafsch;
+
+    /**
+     * Naam van de scheidsrechter
+     * @var string
+     */
+    public $Scheidsrechter;
+
+    /**
+     * Naam van het veld bij de KNVB
+     * @var string
+     */
+    public $VeldKNVB;
+
+    /**
+     * Naam van het veld bij de club
+     * @var string
+     */
+    public $VeldClub;
+
+    /**
+     * Kleedkamer voor het thuisteam
+     * @var string
+     */
+    public $Kleedkamer_thuis;
+
+    /**
+     * @var Kleedkamer voor het uitteam
+     */
+    public $Kleedkamer_uit;
+
+    /**
+     * @var Kleedkamer voor de scheidsrechter
+     */
+    public $Kleedkamer_official;
 }

@@ -77,6 +77,9 @@ class Club {
         $this->api = $api;
     }
 
+    /**
+     * @return string
+     */
     public function getName()
     {
         return $this->clubnaam;
@@ -109,6 +112,11 @@ class Club {
         return  $this->teams;
     }
 
+    /**
+     * @param  string $id
+     * @throws MissingAttributeException
+     * @return Team
+     */
     public function getTeam($id)
     {
         $teams = $this->getTeams();
@@ -120,5 +128,40 @@ class Club {
         throw new MissingAttributeException("Team $id is not available");
     }
 
+    public function getMatches($weeknummer = null, $comptype = null, $zaalveld = null, $order = null)
+    {
+        $params = [];
+        if($comptype !== null){
+            $params['comptype'] = $comptype;
+        }
+        if($weeknummer !== null){
+            $params['weeknummer'] = $weeknummer;
+        }
+        if($zaalveld !== null){
+            $params['zaalveld'] = $zaalveld;
+        }
+        if($order !== null){
+            $params['order'] = $order;
+        }
 
+        $response = $this->api->request('wedstrijden', $params);
+
+        $matches = array();
+        foreach($response['List'] as $item){
+            $matches[] = $this->api->map($item, new Match());
+        }
+
+        return $matches;
+    }
+
+    /**
+     * @param  string $id
+     * @return Match
+     */
+    public function getMatch($id)
+    {
+        $response = $this->api->request('wedstrijd/'.$id);
+        return $this->api->map($response['List'][0], new Match($this->api));
+    }
+    
 }
