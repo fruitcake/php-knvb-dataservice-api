@@ -180,4 +180,14 @@ class Club {
         return $competitions;
     }
 
+    /**
+     * @return Banner
+     */
+    public function getBanner()
+    {
+        $response = $this->api->request('banners');
+
+        return $this->api->map($response['List'], new Banner);
+    }
+
 }

@@ -22,6 +22,8 @@ Simple example:
     $club = $api->initializeClub($pathname, $key);
 
     echo $club->getName();
+    echo $club->getBanner()->getOutput('leaderboard');
+    
     $matches = $club->getMatches();
     $competitions = $club->getCompetitions();
     
