@@ -1,9 +1,8 @@
 <?php
-
 namespace KNVB\Dataservice;
 
-class Competition {
-
+class Competition extends AbstractItem
+{
     /**
      * Competitie Naam
      * @var string

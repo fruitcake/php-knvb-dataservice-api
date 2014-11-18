@@ -1,5 +1,4 @@
 <?php
-
 namespace KNVB\Dataservice\HttpClient;
 
 use GuzzleHttp\Collection;
@@ -8,8 +7,8 @@ use GuzzleHttp\Event\SubscriberInterface;
 use GuzzleHttp\Event\BeforeEvent;
 use GuzzleHttp\Message\RequestInterface;
 
-
-class AuthenticationSubscriber implements SubscriberInterface {
+class AuthenticationSubscriber implements SubscriberInterface
+{
 
     /** @var Collection Configuration settings */
     private $config;

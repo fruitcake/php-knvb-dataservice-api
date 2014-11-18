@@ -1,9 +1,8 @@
 <?php
-
 namespace KNVB\Dataservice;
 
-class Ranking {
-
+class Ranking extends AbstractItem
+{
     public $naam;
 	public $TeamID;
 	public $logo;
@@ -20,4 +19,19 @@ class Ranking {
 	public $CompNummer;
 	public $WedstrijdDag;
 
+	/**
+	 * @return string
+	 */
+	public function getId()
+	{
+		return $this->TeamID;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getName()
+	{
+		return $this->naam;
+	}
 }

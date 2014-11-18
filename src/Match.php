@@ -1,9 +1,8 @@
 <?php
-
 namespace KNVB\Dataservice;
 
-class Match {
-
+class Match extends AbstractItem
+{
     /**
      * Uniek ID van de wedstrijd
      * @var string

@@ -1,9 +1,16 @@
 <?php
-
 namespace KNVB\Dataservice;
 
-class Banner {
+class Banner extends AbstractItem
+{
+    /**
+     * @var string
+     */
     public $token;
+
+    /**
+     * @var string
+     */
     public $clubid;
 
     /**

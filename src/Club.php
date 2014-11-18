@@ -1,8 +1,8 @@
 <?php
-
 namespace KNVB\Dataservice;
 
-class Club {
+class Club extends AbstractItem
+{
 
     /**
      * Session ID

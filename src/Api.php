@@ -1,5 +1,4 @@
 <?php
-
 namespace KNVB\Dataservice;
 
 use JsonMapper;
@@ -7,7 +6,8 @@ use KNVB\Dataservice\Exception\InvalidResponseException;
 use KNVB\Dataservice\HttpClient\HttpClient;
 use KNVB\Dataservice\HttpClient\HttpClientInterface;
 
-class Api {
+class Api
+{
 
 	/** @var HttpClientInterface $client  */
 	protected $client;

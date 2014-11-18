@@ -1,9 +1,8 @@
 <?php
-
 namespace KNVB\Dataservice\HttpClient;
 
-interface HttpClientInterface {
-
+interface HttpClientInterface
+{
     /**
      *
      * @param  string $path

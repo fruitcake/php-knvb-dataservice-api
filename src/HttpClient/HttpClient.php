@@ -1,13 +1,11 @@
 <?php
-
 namespace KNVB\Dataservice\HttpClient;
 
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\ClientInterface as GuzzleClientInterface;
 
-
-class HttpClient implements HttpClientInterface {
-
+class HttpClient implements HttpClientInterface
+{
     /**
      * The default options that are passed to the Guzzle Client
      *

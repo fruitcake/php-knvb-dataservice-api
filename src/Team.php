@@ -1,9 +1,8 @@
 <?php
-
 namespace KNVB\Dataservice;
 
-class Team {
-
+class Team extends AbstractItem
+{
     /**
      * @var string
      */
@@ -43,16 +42,25 @@ class Team {
     /** @var Api */
     protected $api;
 
+    /**
+     * @param Api $api
+     */
     public function __construct(Api $api)
     {
         $this->api = $api;
     }
 
+    /**
+     * @return string
+     */
     public function getId()
     {
         return $this->teamid;
     }
 
+    /**
+     * @return string
+     */
     public function getName()
     {
         return $this->teamname;
