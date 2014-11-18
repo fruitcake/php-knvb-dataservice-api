@@ -8,6 +8,7 @@ You can use the HttpClient to make requests to the API directly or use the API o
 
 All objects have public properties, matching the key/value from the API directly.
 
+See the documentation on http://api.knvbdataservice.nl/v2/
 
 Simple example:
 
