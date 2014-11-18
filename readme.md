@@ -21,9 +21,11 @@ Simple example:
     // Initialize the club
     $club = $api->initializeClub($pathname, $key);
 
-    echo $club->clubnaam;
+    echo $club->getName();
+    $matches = $club->getMatches();
+    
     foreach($club->getTeams() as $team){
-        echo $team->teamname;
-        $results = $team->getResults('R');
-        $schedule = $team->getSchedule('R');
+        echo $team->getName();
+        $results = $team->getResults();
+        $schedule = $team->getSchedule();
     }

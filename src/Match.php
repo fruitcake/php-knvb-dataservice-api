@@ -158,12 +158,14 @@ class Match {
     public $Kleedkamer_thuis;
 
     /**
-     * @var Kleedkamer voor het uitteam
+     * Kleedkamer voor het uitteam
+     * @var string
      */
     public $Kleedkamer_uit;
 
     /**
-     * @var Kleedkamer voor de scheidsrechter
+     * Kleedkamer voor de scheidsrechter
+     * @var string
      */
     public $Kleedkamer_official;
 }
