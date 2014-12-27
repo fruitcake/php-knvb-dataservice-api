@@ -15,11 +15,24 @@ class Api
 	/** @var JsonMapper $mapper */
 	protected $mapper;
 
+	/** @var Club $club  */
+	protected $club;
+
+	protected $pathname;
+	protected $key;
+	protected $apiversion;
+
 	/**
+	 * @param string $pathname
+	 * @param string $key
+	 * @param string $apiversion
 	 * @param HttpClientInterface $client
 	 */
-	public function __construct(HttpClientInterface $client = null)
+	public function __construct($pathname, $key, $apiversion = '2.0', HttpClientInterface $client = null)
 	{
+		$this->pathname = $pathname;
+		$this->key = $key;
+		$this->apiversion = $apiversion;
 		$this->client = $client ?: new HttpClient();
 		$this->mapper = new JsonMapper();
 	}
@@ -34,8 +47,12 @@ class Api
 	 */
 	public function request($path, $parameters = [])
 	{
-		try{
+		try {
 			$data = $this->client->get($path, $parameters);
+		}catch(\GuzzleHttp\Exception\ParseException $e){
+			throw new InvalidResponseException("Cannot parse message: ".$e->getResponse()->getBody(), $e->getCode());
+		}catch(\GuzzleHttp\Exception\RequestException $e) {
+			throw new InvalidResponseException("Cannot finish request: " . $e->getMessage(). ', Request:' . $e->getRequest(), $e->getCode());
 		}catch(\Exception $e){
 			throw new InvalidResponseException($e->getMessage(), $e->getCode());
 		}
@@ -71,17 +88,21 @@ class Api
 	 * @throws InvalidResponseException
 	 * @return Club
 	 */
-	public function initializeClub($pathname, $key, $apiversion = '2.0')
+	public function getClub()
 	{
-		$response = $this->request('initialisatie/'.$pathname, ['apiversion' => $apiversion]);
+		if ($this->club) {
+			return $this->club;
+		}
+
+		$response = $this->request('initialisatie/'.$this->pathname, ['apiversion' => $this->apiversion]);
 
 		if (isset($response['List']) && isset($response['List'][0])) {
 
 			/** @var Club $club */
-			$club = $this->mapper->map($response['List'][0], new Club($this));
-			$this->client->authenticate($club->PHPSESSID, $key);
+			$this->club = $this->mapper->map($response['List'][0], new Club($this));
+			$this->client->authenticate($this->club->PHPSESSID, $this->key);
 
-			return $club;
+			return $this->club;
 		}
 
 		throw new InvalidResponseException($response['message'], $response['errorcode']);

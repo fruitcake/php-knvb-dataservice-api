@@ -18,10 +18,10 @@ require_once __DIR__ .'/../vendor/autoload.php';
 use KNVB\Dataservice\Api;
 
 // Create a new API instance
-$api = new Api();
+$api = new Api($pathname, $key);
 
 // Initialize the club
-$club = $api->initializeClub($pathname, $key);
+$club = $api->getClub();
 
 echo $club->getName();
 echo $club->getBanner()->getOutput('leaderboard');
