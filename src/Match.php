@@ -96,13 +96,11 @@ class Match extends AbstractItem
 
     /**
      * # doelpunten thuis club
-     * @var int|null
      */
     public $PuntenTeam1;
 
     /**
      * # doelpunten uit club
-     * @var int|null
      */
     public $PuntenTeam2;
 
@@ -110,7 +108,6 @@ class Match extends AbstractItem
      * # doelpunten thuis club in verlenging,
      * geeft NULL als er niet is gescoord of er geen verlenging is geweest
      *
-     * @var int|null
      */
     public $PuntenTeam1Verl;
 
@@ -118,7 +115,6 @@ class Match extends AbstractItem
      * # doelpunten uit club in verlenging,
      * geeft NULL als er niet is gescoord of er geen verlenging is geweest
      *
-     * @var int|null
      */
     public $PuntenTeam2Verl;
 
@@ -126,7 +122,6 @@ class Match extends AbstractItem
      * # doelpunten thuis club bij strafschoppen,
      * geeft NULL als er niet is gescoord of er geen strafschoppen genomen zijn
      *
-     * @var int|null
      */
     public $PuntenTeam1Strafsch;
 
@@ -134,7 +129,6 @@ class Match extends AbstractItem
      * # doelpunten thuis club bij strafschoppen,
      * geeft NULL als er niet is gescoord of er geen strafschoppen genomen zijn
      *
-     * @var int|null
      */
     public $PuntenTeam2Strafsch;
 
