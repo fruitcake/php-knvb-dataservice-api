@@ -128,6 +128,16 @@ class Club extends AbstractItem
         throw new MissingAttributeException("Team $id is not available");
     }
 
+    /**
+     * Met deze call kan een listing van wedstrijden van de hele club worden opgehaald.
+     * 
+     * @param string|int $weeknummer
+     * @param string $comptype
+     * @param string $zaalveld
+     * @param string $order
+     * @return Match[]
+     * @see http://api.knvbdataservice.nl/v2/wedstrijden
+     */
     public function getMatches($weeknummer = null, $comptype = null, $zaalveld = null, $order = null)
     {
         $params = [];
