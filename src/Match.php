@@ -7,6 +7,12 @@ class Match extends AbstractItem
      * Uniek ID van de wedstrijd
      * @var string
      */
+    public $MatchId;
+
+    /**
+     * Uniek ID van de wedstrijd
+     * @var string
+     */
     public $MatchID;
 
     /**
@@ -167,4 +173,8 @@ class Match extends AbstractItem
      * @var string
      */
     public $Kleedkamer_official;
+
+    public function getId() {
+        return $this->MatchID ?: $this->MatchId;
+    }
 }
