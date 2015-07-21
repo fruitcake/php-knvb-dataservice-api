@@ -50,7 +50,7 @@ class Club extends AbstractItem
 
     /**
      * Twitter account voor club
-     * @var string
+     * @var array
      */
     public $twitter;
 
@@ -130,7 +130,7 @@ class Club extends AbstractItem
 
     /**
      * Met deze call kan een listing van wedstrijden van de hele club worden opgehaald.
-     * 
+     *
      * @param string|int $weeknummer
      * @param string $comptype
      * @param string $zaalveld
