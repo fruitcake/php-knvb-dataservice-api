@@ -78,7 +78,7 @@ class Api
 	 */
 	public function map($json, $object)
 	{
-		return $this->mapper->map($json, $object);
+		return $this->mapper->map((object) $json, $object);
 	}
 
 
@@ -99,7 +99,7 @@ class Api
 		if (isset($response['List']) && isset($response['List'][0])) {
 
 			/** @var Club $club */
-			$this->club = $this->mapper->map($response['List'][0], new Club($this));
+			$this->club = $this->map($response['List'][0], new Club($this));
 			$this->client->authenticate($this->club->PHPSESSID, $this->key);
 
 			return $this->club;
