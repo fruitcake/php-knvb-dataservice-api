@@ -50,7 +50,7 @@ class Match extends AbstractItem
      * Uniek ID van thuis team
      * @var string
      */
-    public $ThuisTeamID;
+    public $ThuisTeamId;
 
     /**
      * Naam van team bestaande uit Club TeamAanduiding
@@ -68,7 +68,7 @@ class Match extends AbstractItem
      * Uniek ID van het uit-team
      * @var string
      */
-    public $UitTeamID;
+    public $UitTeamId;
 
     /**
      * Wedstrijd status
