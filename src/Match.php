@@ -168,6 +168,32 @@ class Match extends AbstractItem
      */
     public $Kleedkamer_official;
 
+    /**
+     * Club KNVB nummer.
+     * @var string
+     */
+    public $Facility_Id;
+    /**
+     * Naam van het sportpark
+     * @var string
+     */
+    public $Facility_naam;
+    /**
+     * De stand van het sportpark
+     * @var string
+     */
+    public $Facility_Stad;
+    /**
+     * De postcode van het sportpark
+     * @var string
+     */
+    public $Facility_Postcode;
+    /**
+     * De adres van het sportpark
+     * @var string
+     */
+    public $Facility_Adres;
+
     public function getId() {
         return $this->MatchID ?: $this->MatchId;
     }
