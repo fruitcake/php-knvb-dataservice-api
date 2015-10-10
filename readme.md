@@ -1,7 +1,5 @@
 ## KNVB Dataservice API Wrapper
 
-** Under construction **
-
 Use Composer to install this package (`"fruitcakestudio/knvb-dataservice-api": "0.2.x@dev",`) and require the autoloader.
 
 You can use the HttpClient to make requests to the API directly or use the API object to get more abstracted results.
