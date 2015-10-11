@@ -15,7 +15,7 @@ class HttpClient implements HttpClientInterface
         'base_url' => 'http://api.knvbdataservice.nl/api/',
         'defaults' => [
             'auth'      => 'knvb',
-            'timeout'   => 10,
+            'timeout'   => 30,
             'headers'   => [
                 'User-Agent' => 'php-knvb-dataservice-api',
             ],
