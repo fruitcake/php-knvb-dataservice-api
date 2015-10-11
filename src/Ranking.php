@@ -3,35 +3,94 @@ namespace KNVB\Dataservice;
 
 class Ranking extends AbstractItem
 {
+    /**
+     * @var string
+     */
     public $naam;
-	public $TeamID;
-	public $logo;
-	public $Positie;
-	public $Punten;
+
+    /**
+     * @var string
+     */
+    public $TeamID;
+
+    /**
+     * @var string
+     */
+    public $logo;
+
+    /**
+     * @var int
+     */
+    public $Positie;
+
+    /**
+     * @var int
+     */
+    public $Punten;
+
+    /**
+     * @var int
+     */
     public $Gespeeld;
-	public $Gewonnen;
-	public $Gelijk;
-	public $Verloren;
+
+    /**
+     * @var int
+     */
+    public $Gewonnen;
+
+    /**
+     * @var int
+     */
+    public $Gelijk;
+
+    /**
+     * @var int
+     */
+    public $Verloren;
+
+    /**
+     * @var int
+     */
     public $DoelpuntenVoor;
-	public $DoelpuntenTegen;
-	public $PuntenMindering;
+
+    /**
+     * @var int
+     */
+    public $DoelpuntenTegen;
+
+    /**
+     * @var int
+     */
+    public $PuntenMindering;
+
+    /**
+     * @var string
+     */
     public $CompType;
-	public $CompNummer;
-	public $WedstrijdDag;
 
-	/**
-	 * @return string
-	 */
-	public function getId()
-	{
-		return $this->TeamID;
-	}
+    /**
+     * @var string
+     */
+    public $CompNummer;
 
-	/**
-	 * @return string
-	 */
-	public function getName()
-	{
-		return $this->naam;
-	}
+    /**
+     * @var string
+     */
+    public $WedstrijdDag;
+
+    /**
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->TeamID;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->naam;
+    }
 }
