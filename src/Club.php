@@ -50,7 +50,7 @@ class Club extends AbstractItem
 
     /**
      * Twitter account voor club
-     * @var string
+     * @var array 
      */
     public $twitter;
 
