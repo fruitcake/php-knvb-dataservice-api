@@ -138,7 +138,15 @@ class Team extends AbstractItem
         $response = $this->api->request('teams/'.$this->getId().'/ranking', $params);
 
         $ranking = array();
-        foreach($response['List'] as $item){
+        $list = $response['List'];
+
+        // Sometimes this contains multiple rankings, if so, take the first one
+        if (isset($list[0]) && isset($list[0]['pouleid'])) {
+            $list = $list[0];
+            unset($list['pouleid']);
+        }
+
+        foreach($list as $item){
             $ranking[] = $this->api->map($item, new Ranking());
         }
 
