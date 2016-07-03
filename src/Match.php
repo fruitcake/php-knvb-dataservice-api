@@ -197,4 +197,14 @@ class Match extends AbstractItem
     public function getId() {
         return $this->MatchID ?: $this->MatchId;
     }
+
+    /**
+     * De datum + tijd in unix time stamp
+     * @return int
+     */
+    public function getTime() {
+        //Time is saved as a string formatted like: 1830.
+        $time = implode(":", str_split($this->Tijd, 2));
+        return strtotime($this->Datum . ' '.$time);
+    }
 }
