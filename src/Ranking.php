@@ -64,7 +64,7 @@ class Ranking extends AbstractItem
     public $PuntenMindering;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $CompType;
 
