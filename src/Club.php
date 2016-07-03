@@ -1,5 +1,6 @@
 <?php
 namespace KNVB\Dataservice;
+use KNVB\Dataservice\Exception\MissingAttributeException;
 
 class Club extends AbstractItem
 {
