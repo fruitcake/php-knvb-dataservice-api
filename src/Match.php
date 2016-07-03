@@ -107,28 +107,28 @@ class Match extends AbstractItem
     /**
      * # doelpunten thuis club in verlenging,
      * geeft NULL als er niet is gescoord of er geen verlenging is geweest
-     *
+     * @var string|null
      */
     public $PuntenTeam1Verl;
 
     /**
      * # doelpunten uit club in verlenging,
      * geeft NULL als er niet is gescoord of er geen verlenging is geweest
-     *
+     * @var string|null
      */
     public $PuntenTeam2Verl;
 
     /**
      * # doelpunten thuis club bij strafschoppen,
      * geeft NULL als er niet is gescoord of er geen strafschoppen genomen zijn
-     *
+     * @var string|null
      */
     public $PuntenTeam1Strafsch;
 
     /**
      * # doelpunten thuis club bij strafschoppen,
      * geeft NULL als er niet is gescoord of er geen strafschoppen genomen zijn
-     *
+     * @var string|null
      */
     public $PuntenTeam2Strafsch;
 
