@@ -85,7 +85,6 @@ class Competition extends AbstractItem
     /**
      * @param  int|string   $weeknummer week waarvan de uitslagen worden opgehaald (1-52, A) (optioneel)
      * @return Match[]
-     * @throws InvalidResponseException
      */
     public function getResults($weeknummer = null)
     {
@@ -110,7 +109,6 @@ class Competition extends AbstractItem
     /**
      * @param  int|string   $weeknummer week waarvan het programma worden opgehaald (1-52, A) (optioneel)
      * @return Match[]
-     * @throws InvalidResponseException
      */
     public function getSchedule($weeknummer = null)
     {
@@ -133,8 +131,7 @@ class Competition extends AbstractItem
     }
 
     /**
-     * @return Ranking[]
-     * @throws InvalidResponseException
+     * @return Ranking[] 
      */
     public function getRanking()
     {

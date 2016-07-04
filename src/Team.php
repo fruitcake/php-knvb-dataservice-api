@@ -70,7 +70,6 @@ class Team extends AbstractItem
      * @param  int|string   $weeknummer week waarvan de uitslagen worden opgehaald (1-52, A) (optioneel)
      * @param  string       $comptype Competitie type R = Regulier, B = Beker, N = Nacompetitie, V = Vriendschappelijke Competitie
      * @return Match[]
-     * @throws InvalidResponseException
      */
     public function getResults($weeknummer = null, $comptype = null)
     {
@@ -95,7 +94,6 @@ class Team extends AbstractItem
      * @param  int|string   $weeknummer week waarvan het programma worden opgehaald (1-52, A) (optioneel)
      * @param  string       $comptype Competitie type R = Regulier, B = Beker, N = Nacompetitie, V = Vriendschappelijke Competitie
      * @return Match[]
-     * @throws InvalidResponseException
      */
     public function getSchedule($weeknummer = null, $comptype = null)
     {
@@ -121,7 +119,6 @@ class Team extends AbstractItem
      * @param  string   $pouleid ('all' for all poules')
      * @param  int      $periode Om de stand per periode terug te geven (1-4, optioneel)
      * @return Ranking[]
-     * @throws InvalidResponseException
      */
     public function getRanking($comptype = null, $pouleid = null, $periode = null)
     {
@@ -156,7 +153,6 @@ class Team extends AbstractItem
     /**
      * @param  string   $comptype Van welke competitie type moet de stand worden terug gegeven
      * @return Competition[]
-     * @throws InvalidResponseException
      */
     public function getCompetitions($comptype = null)
     {

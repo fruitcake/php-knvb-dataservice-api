@@ -87,7 +87,6 @@ class Club extends AbstractItem
 
     /**
      * @return Team[]
-     * @throws InvalidResponseException
      */
     public function getTeams()
     {
@@ -114,8 +113,7 @@ class Club extends AbstractItem
 
     /**
      * @param  string $id
-     * @throws MissingAttributeException
-     * @return Team
+     * @return Team|null
      */
     public function getTeam($id)
     {
@@ -124,8 +122,6 @@ class Club extends AbstractItem
         if (isset($teams[$id])) {
             return $teams[$id];
         }
-
-        throw new MissingAttributeException("Team $id is not available");
     }
 
     /**
@@ -176,7 +172,6 @@ class Club extends AbstractItem
 
     /**
      * @return Competition[]
-     * @throws InvalidResponseException
      */
     public function getCompetitions()
     {
