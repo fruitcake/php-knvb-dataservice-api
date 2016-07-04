@@ -1,6 +1,8 @@
 <?php
 namespace KNVB\Dataservice;
 
+use DateTime;
+
 class Match extends AbstractItem
 {
     /**
@@ -173,38 +175,47 @@ class Match extends AbstractItem
      * @var string
      */
     public $Facility_Id;
+
     /**
      * Naam van het sportpark
      * @var string
      */
     public $Facility_naam;
+
     /**
      * De stand van het sportpark
      * @var string
      */
     public $Facility_Stad;
+
     /**
      * De postcode van het sportpark
      * @var string
      */
     public $Facility_Postcode;
+
     /**
      * De adres van het sportpark
      * @var string
      */
     public $Facility_Adres;
 
-    public function getId() {
+    /**
+     * @return string
+     */
+    public function getId()
+    {
         return $this->MatchID ?: $this->MatchId;
     }
 
     /**
-     * De datum + tijd in unix time stamp
-     * @return int
+     * De datum + tijd als DateTime object
+     *
+     * @return DateTime
      */
-    public function getTime() {
-        //Time is saved as a string formatted like: 1830.
-        $time = implode(":", str_split($this->Tijd, 2));
-        return strtotime($this->Datum . ' '.$time);
+    public function getDateTime()
+    {
+        //Date is in Y-m-d, time is saved as a string formatted like: 1830.
+        return DateTime::createFromFormat('Y-m-d Hi', $this->Datum . ' ' . $this->Tijd);
     }
 }
