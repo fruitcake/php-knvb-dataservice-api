@@ -11,8 +11,8 @@
     ],
     "require": {
         "php": ">=5.4.0",
-        "guzzlehttp/guzzle": "~5.0",
-        "netresearch/jsonmapper": "~0.4"
+        "guzzlehttp/guzzle": "^5.0",
+        "netresearch/jsonmapper": "^0.11"
     },
     "autoload": {
         "psr-4": {
